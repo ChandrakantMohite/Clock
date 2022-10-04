@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+</head>
+<body >
+    <h2></h2>
+    <h1></h1>
+
+<script>
+showTime();
+
+function showTime(){
+    var session = "AM";
+    var d=new Date();
+     
+     var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+
+     var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+
+
+      var hrs = d.getHours();
+      var min = d.getMinutes();
+      var sec = d.getSeconds();
+
+      if(hrs == 0){
+      hrs = 12;
+  }
+  if(hrs > 12){
+      hrs = hrs - 12;
+      session = "PM";
+   }
+
+   hrs = (hrs < 10) ? "0" + hrs : hrs;
+   min = (min < 10) ? "0" + min : min;
+   sec = (sec < 10) ? "0" + sec : sec;
+      
+    var result  = hrs+ ":"+min+":"+sec+" "+session;
+    
+    document.getElementsByTagName('h1')[0].innerText=result;
+    document.getElementsByTagName('h2')[0].innerText=date;
+    let t = setTimeout(function(){ showTime() }, 1000);
+
+}
+</script>
+
+</body>
+
+
+</html>
